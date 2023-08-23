@@ -11,12 +11,13 @@ const MyApp: AppType<{ session: Session | null }> = ({
 }) => {
   return (
     <SessionProvider session={session}>
-      <Component {...pageProps} />
 
-      <Script id="paypal-script" src={`https://www.paypal.com/sdk/js?client-id=${process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID}&currency=USD&buyer-country=US&merchant-id=${process.env.NEXT_PUBLIC_PAYPAL_MERCHANT_ID}&components=applepay`}>
+      <Component {...pageProps} />
+      <Script strategy="beforeInteractive" id="paypal-script" src={`https://www.paypal.com/sdk/js?client-id=${process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID}&currency=USD&buyer-country=US&merchant-id=${process.env.NEXT_PUBLIC_PAYPAL_MERCHANT_ID}&components=applepay`}>
       </Script>
-      <Script id="apple-script" src="https://applepay.cdn-apple.com/jsapi/v1/apple-pay-sdk.js"></Script>
-    
+      <Script strategy="beforeInteractive" id="apple-script" src="https://applepay.cdn-apple.com/jsapi/v1/apple-pay-sdk.js"></Script>
+
+
     </SessionProvider>
   );
 };
