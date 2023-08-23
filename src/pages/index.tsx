@@ -30,14 +30,14 @@ export default function Home() {
 
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
-        // if (!window.ApplePaySession) {
-        //   console.error('This device does not support Apple Pay');
-        // }
-        // // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // // @ts-ignore
-        // if (!ApplePaySession.canMakePayments()) {
-        //   console.error('This device is not capable of making Apple Pay payments');
-        // }
+        if (!window.ApplePaySession) {
+          //   console.error('This device does not support Apple Pay');
+        }
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        if (!ApplePaySession.canMakePayments()) {
+          console.error('This device is not capable of making Apple Pay payments');
+        }
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
         const applepay = paypal.Applepay();
