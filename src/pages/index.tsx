@@ -18,34 +18,38 @@ export default function Home() {
   if (typeof window !== 'undefined') {
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
-    if (!window.ApplePaySession) {
-      console.error('This device does not support Apple Pay');
-    }
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
-    if (!ApplePaySession.canMakePayments()) {
-      console.error('This device is not capable of making Apple Pay payments');
-    }
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
-    const applepay = paypal.Applepay();
-    applepay.config()
+    if (window.ApplePaySession && ApplePaySession.canMakePayments() && paypal) {
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
-      .then(applepayConfig => {
-        if (applepayConfig.isEligible) {
-          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-          // @ts-ignore
-          document.getElementById("applepay-container").innerHTML = '<apple-pay-button id="btn-appl" buttonstyle="black" type="buy" locale="en">';
-        }
-      })
+      if (!window.ApplePaySession) {
+        console.error('This device does not support Apple Pay');
+      }
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
-      .catch(applepayConfigError => {
-        console.error('Error while fetching Apple Pay configuration.');
-        console.error(applepayConfigError);
-      });
+      if (!ApplePaySession.canMakePayments()) {
+        console.error('This device is not capable of making Apple Pay payments');
+      }
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      const applepay = paypal.Applepay();
+      applepay.config()
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        .then(applepayConfig => {
+          if (applepayConfig.isEligible) {
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-ignore
+            document.getElementById("applepay-container").innerHTML = '<apple-pay-button id="btn-appl" buttonstyle="black" type="buy" locale="en">';
+          }
+        })
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        .catch(applepayConfigError => {
+          console.error('Error while fetching Apple Pay configuration.');
+          console.error(applepayConfigError);
+        });
 
+    }
   }
 
   return (
