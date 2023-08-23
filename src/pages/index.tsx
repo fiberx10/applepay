@@ -31,7 +31,7 @@ export default function Home() {
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
         if (!window.ApplePaySession) {
-           console.error('This device does not support Apple Pay');
+          console.error('This device does not support Apple Pay');
         }
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
@@ -41,15 +41,19 @@ export default function Home() {
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
         const applepay = paypal.Applepay();
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        document.getElementById("applepay-container").innerHTML = '<apple-pay-button id="btn-appl" buttonstyle="black" type="buy" locale="en">';
+
         applepay.config()
           // eslint-disable-next-line @typescript-eslint/ban-ts-comment
           // @ts-ignore
           .then(applepayConfig => {
             if (applepayConfig.isEligible) {
               console.log('Apple Pay is eligible');
-              // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-              // @ts-ignore
-              document.getElementById("applepay-container").innerHTML = '<apple-pay-button id="btn-appl" buttonstyle="black" type="buy" locale="en">';
+
+              // document.getElementById("applepay-container").innerHTML = '<apple-pay-button id="btn-appl" buttonstyle="black" type="buy" locale="en">';
+
             }
           })
           // eslint-disable-next-line @typescript-eslint/ban-ts-comment
