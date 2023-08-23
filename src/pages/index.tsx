@@ -45,10 +45,13 @@ export default function Home() {
         // @ts-ignore
         document.getElementById("applepay-container").innerHTML = '<apple-pay-button id="btn-appl" buttonstyle="black" type="buy" locale="en">';
 
+        // console.log(applepay.config());
+
         applepay.config()
           // eslint-disable-next-line @typescript-eslint/ban-ts-comment
           // @ts-ignore
           .then(applepayConfig => {
+            console.log('Apple Pay configuration', JSON.stringify(applepayConfig));
             if (applepayConfig.isEligible) {
               console.log('Apple Pay is eligible');
 
