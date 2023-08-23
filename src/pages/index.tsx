@@ -22,7 +22,7 @@ export default function Home() {
     if (typeof window !== 'undefined') {
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
-      if (window.ApplePaySession && ApplePaySession.canMakePayments() && paypal) {
+      if (window.ApplePaySession && ApplePaySession && paypal) {
         console.log('Apple Pay can make payments');
 
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
