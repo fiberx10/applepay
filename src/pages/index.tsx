@@ -24,6 +24,10 @@ export default function Home() {
       // @ts-ignore
       if (window.ApplePaySession && ApplePaySession && paypal) {
         console.log('Apple Pay can make payments');
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        document.getElementById("applepay-container").innerHTML = '<apple-pay-button id="btn-appl" buttonstyle="black" type="buy" locale="en">';
+
 
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
