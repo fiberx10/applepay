@@ -19,6 +19,8 @@ export default function Home() {
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     if (window.ApplePaySession && ApplePaySession.canMakePayments() && paypal) {
+      console.log('Apple Pay can make payments');
+
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
       if (!window.ApplePaySession) {
