@@ -5,7 +5,7 @@
 /* eslint-disable  @typescript-eslint/restrict-template-expressions */
 import { signIn, signOut, useSession } from "next-auth/react";
 import Head from "next/head";
-import { useEffect } from "react";
+import { useEffect, useLayoutEffect } from "react";
 import Link from "next/link";
 import { api } from "@/utils/api";
 import Script from "next/script";
@@ -16,7 +16,7 @@ export default function Home() {
 
 
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     if (typeof window !== 'undefined') {
